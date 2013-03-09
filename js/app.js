@@ -61,7 +61,13 @@ App.Table = DS.Model.extend({
 });
 
 App.Tab = DS.Model.extend({
-  tabItems: DS.hasMany('App.TabItem')
+  tabItems: DS.hasMany('App.TabItem'),
+  cents: function() {
+    // Get all tab items, use array function getEach to get an array of cents and use the reduce function with an accumulator that starts with 0
+    return this.get('tabItems').getEach('cents').reduce(function(accum, item) {
+      return accum + item;
+    }, 0);
+  }.property('tabItems.@each.cents')
 });
 
 App.TabItem = DS.Model.extend({
