@@ -72,8 +72,10 @@
       <ul id="menu">
         {{#each controller}}
           <li>
-            <img {{ bindAttr src="imageUrl" }}/>
-            <p>{{ name }}</p>
+            <a href="#" {{ action "addFood" this }}> <!-- this refers to the object in the each -->
+              <img {{ bindAttr src="imageUrl" }}/>
+              <p>{{ name }}</p>
+            </a>
           </li>
         {{/each}}
       </ul>
@@ -83,12 +85,12 @@
       <ul id="customer-tab">
         {{#each tabItem in tabItems }}
           <li>
-            <h3>{{ tabItem.food.name }} <span>${{ tabItem.cents }}</span></h3>
+            <h3>{{ tabItem.food.name }} <span>${{ money tabItem.cents }}</span></h3>
           </li>
           {{else}}
             <li><h3>Click a food to add it</h3></li>
         {{/each}}
-        <li id="total"><h3>Total <span>${{ cents }}</span></h3></li>
+        <li id="total"><h3>Total <span>${{ money cents }}</span></h3></li>
       </ul>
     </script>
 
