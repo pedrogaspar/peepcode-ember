@@ -18,7 +18,7 @@
   <body>
     <script type="text/x-handlebars" data-template-name="application">
       <div class="row">
-        <div class="twelve columns">
+        <div class="twelve columns" id="tables">
           <h1>Ordr</h1>
           <hr/>
           <p>{{ outlet }}</p>
@@ -39,7 +39,7 @@
     <script type="text/x-handlebars" data-template-name="_tablesMenu">
       <h2>Tables</h2>
       {{#each table in controller}}
-        {{ table.id }}
+        {{#linkTo "table" table class="panel six columns"}}{{ table.id }}{{/linkTo}}
       {{/each}}
     </script>
 

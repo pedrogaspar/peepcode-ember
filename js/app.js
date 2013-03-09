@@ -3,7 +3,11 @@ var App = Ember.Application.create();
 // Router
 // Smilar to rails routes
 App.Router.map(function() {
-  this.resource('tables'); // '/#/tables'
+  // /#/tables'
+  this.resource('tables', function () {
+    // /#/tables/:table_id (current path is combined with parent path)
+    this.resource('table', { path: ':table_id'}); // Must have name of resource before id (not just id like in rails)
+  });
 });
 
 // Routes
