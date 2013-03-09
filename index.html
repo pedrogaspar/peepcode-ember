@@ -46,16 +46,17 @@
 
     <script type="text/x-handlebars" data-template-name="_tableMenu">
       <h2>Tables</h2>
-      {{ log controller }} <!-- To the console -->
-      {{ controller }} <!-- Displays in the template -->
+      <!-- {{ log controller }} To the console -->
+      <!-- {{ controller }} Displays in the template -->
       {{#each table in controller}}
         {{#linkTo "table" table class="panel six columns"}}{{ table.id }}{{/linkTo}}
       {{/each}}
     </script>
 
     <script type="text/x-handlebars" data-template-name="table">
-      {{ controller }}
-      {{ model }}
+      <!-- Debugging -->
+      <!-- {{ controller }} -->
+      <!-- {{ model }} -->
       <div class="row">
         <div class="three columns">
           {{ render 'food' }}
