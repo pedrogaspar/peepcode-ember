@@ -28,16 +28,6 @@ App.ApplicationRoute = Ember.Route.extend({
     // this.controllerFor() -> Gets the a controller object
     // this.controllerFor('App.FoodController') -> Don't use uppercase except in models
     this.controllerFor('food').set('model', App.Food.find()); // Use get and set for bindings
-  },
-  events: {
-    addFood: function(food) {
-      var table = this.controllerFor('table').get('model'); // Gets the current selected table
-      var tabItems = table.get('tab.tabItems'); // In a single get tab and tabItems
-      tabItems.createRecord({
-        food: food,
-        cents: food.get('cents')
-      });
-    }
   }
 });
 
@@ -57,15 +47,14 @@ App.TablesController = Ember.ArrayController.extend(); // Must match the route n
 // App.TableController = Ember.ObjectController.extend();
 
 App.FoodController = Ember.ArrayController.extend({
-  // Test bubble up
-  // addFood: function(food) {
-  //   var table = this.controllerFor('table').get('model'); // Gets the current selected table
-  //   var tabItems = table.get('tab.tabItems'); // In a single get tab and tabItems
-  //   tabItems.createRecord({
-  //     food: food,
-  //     cents: food.get('cents')
-  //   });
-  // }
+  addFood: function(food) {
+    var table = this.controllerFor('table').get('model'); // Gets the current selected table
+    var tabItems = table.get('tab.tabItems'); // In a single get tab and tabItems
+    tabItems.createRecord({
+      food: food,
+      cents: food.get('cents')
+    });
+  }
 });
 App.TabController = Ember.ObjectController.extend();
 
